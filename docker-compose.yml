@@ -1,0 +1,32 @@
+version: "3.2"
+
+services:
+    db-verzel:
+        image: mongo:4.2
+        container_name: db-verzel
+        #restart: always
+        ports:
+            - ${DB_PORT}:27017
+        environment:
+            MONGO_INITDB_DATABASE: ${DB_NAME}
+            MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+            MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
+
+    api-verzel:
+        image: node:14-alpine3.14
+        container_name: api-verzel
+        env_file:
+            - .env
+        depends_on:
+            - db-verzel
+        ports:
+            - ${PORT}:${PORT}
+        volumes:
+            - .:/usr/src/app
+        working_dir: /usr/src/app
+        command: sh -c "npm i && npm run dev:server"
+        logging:
+            driver: "json-file"
+            options:
+              max-size: "10m"
+              max-file: "5"
