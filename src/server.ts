@@ -1,3 +1,18 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 import { app } from "./app";
+import { connectToMongoDb } from "./database/mongo";
 
-app.listen(3333)
+const PORT = process.env.PORT || 3333; 
+
+const createServer = async () => {
+    await connectToMongoDb();
+    
+    app.listen(PORT, () => {
+      console.log(`Running at ${PORT}`);
+    })
+
+
+
+}
+createServer()

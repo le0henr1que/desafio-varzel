@@ -1,9 +1,9 @@
 version: "3.2"
 
 services:
-    db-verzel:
-        image: mongo:4.2
-        container_name: db-verzel
+    db-verzel-auto:
+        image: mongo
+        container_name: db-verzel-auto
         #restart: always
         ports:
             - ${DB_PORT}:27017
@@ -11,19 +11,22 @@ services:
             MONGO_INITDB_DATABASE: ${DB_NAME}
             MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
             MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
+        volumes:
+            - ./data/db:/data/dbdocke
 
-    api-verzel:
+    api-verzel-auto:
         image: node:14-alpine3.14
-        container_name: api-verzel
+        container_name: api-verzel-auto
         env_file:
             - .env
         depends_on:
-            - db-verzel
+            - db-verzel-auto
         ports:
             - ${PORT}:${PORT}
         volumes:
             - .:/usr/src/app
         working_dir: /usr/src/app
+        
         command: sh -c "npm i && npm run dev:server"
         logging:
             driver: "json-file"

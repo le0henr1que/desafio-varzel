@@ -1,13 +1,12 @@
 import { Router } from 'express';
+import { createCarController } from './modules/car/useCase/CreateCar/index';
 
 
 const router = Router()
 
-router.get('/public/auto', (request, response) => {
-
-    response.send('deu bom');
+router.post('/create/auto', (request, response) => {
+    return createCarController.handle(request, response);
 })
-
 
 
 export {router}
