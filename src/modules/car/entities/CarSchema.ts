@@ -6,6 +6,7 @@ export interface Cars extends Document {
   name: string;
   brand: string;
   model: string;
+  price: string;
   image: string;
   created_at: Date;
   updated_at: Date;
@@ -20,6 +21,9 @@ const schema = new Schema<Cars>({
   },
   model: {
     type: String,
+  },
+  price:{
+    type:String,
   },
   image: {
     type: String,

@@ -17,7 +17,6 @@ export class CreateCarUseCase{
         //     throw new Error('Produto já existe na sua lista')
         // }
 
-        // console.log(data)
         const Cars = new CarsSchema(data);
         await this.carRepository.save(Cars)
 

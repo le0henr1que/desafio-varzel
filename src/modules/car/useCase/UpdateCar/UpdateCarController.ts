@@ -8,13 +8,14 @@ export class UpdateCarController {
     ){}
 
     async handle(request: Request, response:Response): Promise<Response>{
-        const {name, brand, model, image} = request.body;
+        const {name, brand, model, price, image} = request.body;
         
         try{
             await this.updateCarUseCase.execute(request.params.id, {
                 name,
                 brand,
                 model,
+                price,
                 image
             })
 
@@ -22,6 +23,7 @@ export class UpdateCarController {
                 "Name": name,
                 "Brand": brand,
                 "Model":model,
+                "price":price, 
                 "Image":image
             }})
 

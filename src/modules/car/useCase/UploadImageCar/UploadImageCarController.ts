@@ -1,23 +1,21 @@
+import { randomBytes } from "crypto";
 import { Request, Response } from "express";
-import { CreateCarUseCase } from "./CreateCarUseCase";
+import { UploadImageCarUseCase } from "./UploadImageCarUseCase";
 
-export class CreateCarController {
+export class UploadImageCarController {
 
     constructor(
-        private createCarUseCase: CreateCarUseCase,
+        private updateCarUseCase: UploadImageCarUseCase,
     ){}
 
     async handle(request: Request, response:Response): Promise<Response>{
-        const {name, brand, model, price, image} = request.body;
+        
         try{
-            await this.createCarUseCase.execute({
-                name,
-                brand,
-                model,
-                price,
-                image
-            })
-            return response.status(201).send()
+            await this.updateCarUseCase.execute(request.params.id, request.file?.path)
+            
+           
+
+            return response.status(201).send({message:"Sucssesful upload image"})
 
         }catch(err){
             console.log(err)
