@@ -1,0 +1,9 @@
+FROM node:14-alpine3.14
+ 
+WORKDIR /src
+ 
+ADD package*.json ./
+
+COPY . .
+
+RUN npm i

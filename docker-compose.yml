@@ -4,7 +4,7 @@ services:
     db-verzel-auto:
         image: mongo
         container_name: db-verzel-auto
-        #restart: always
+        restart: always
         ports:
             - ${DB_PORT}:27017
         environment:
@@ -15,21 +15,13 @@ services:
             - ./data/db:/data/dbdocke
 
     api-verzel-auto:
-        image: node:14-alpine3.14
-        container_name: api-verzel-auto
-        env_file:
-            - .env
-        depends_on:
-            - db-verzel-auto
-        ports:
-            - ${PORT}:${PORT}
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        container_name:  api-verzel-auto
         volumes:
-            - .:/usr/src/app
-        working_dir: /usr/src/app
-        
-        command: sh -c "npm i && npm run dev:server"
-        logging:
-            driver: "json-file"
-            options:
-              max-size: "10m"
-              max-file: "5"
+            - ./src:/app/src
+        ports:
+            - "8080:8080"
+            - "8181:8181"
+        command: npm run dev:server
