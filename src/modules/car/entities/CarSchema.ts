@@ -3,28 +3,43 @@ import { model, Document, Schema } from 'mongoose';
 
 export interface Cars extends Document {
   // _id:String;
-  name: string;
-  brand: string;
-  model: string;
-  price: string;
+  city:string,
+  name:string
+  brand:string, 
+  model:string, 
+  year:string, 
+  km:string, 
+  price:number
+
   image: string;
   created_at: Date;
   updated_at: Date;
 }
 
 const schema = new Schema<Cars>({
-  name: {
-    type: String,
+  city:{
+    type:String 
   },
-  brand: {
-    type: String,
+  name:{
+    type:String 
   },
-  model: {
-    type: String,
-  },
+  brand:{
+    type:String 
+  }, 
+  model:{
+    type:String 
+  }, 
+  year:{
+    type:String 
+  }, 
+  km:{
+    type:String 
+  }, 
+
   price:{
-    type:String,
+    type:Number
   },
+
   image: {
     type: String,
   },

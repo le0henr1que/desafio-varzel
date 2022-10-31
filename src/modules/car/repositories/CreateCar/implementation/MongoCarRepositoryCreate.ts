@@ -5,9 +5,9 @@ import { ICarRepository } from "../ICarRepositoryCreate";
 
 
 export class MongoCarsRepository implements ICarRepository{
-    async save(car: Cars): Promise<void> {
+    async save(car: Cars): Promise<{}> {
         // console.log("[implementation/mongocarrepository]"+car);
         // console.log(car.price)
-        await CarsSchema.create(car);
+        return await CarsSchema.create(car)
     }
 }

@@ -8,16 +8,20 @@ export class CreateCarController {
     ){}
 
     async handle(request: Request, response:Response): Promise<Response>{
-        const {name, brand, model, price, image} = request.body;
+        const {city, name, brand, model, year, km, price, image} = request.body;
         try{
-            await this.createCarUseCase.execute({
+            var created = await this.createCarUseCase.execute({
+                city,
                 name,
-                brand,
-                model,
+                brand, 
+                model, 
+                year, 
+                km, 
                 price,
                 image
+              
             })
-            return response.status(201).send()
+            return response.status(201).send(created)
 
         }catch(err){
             console.log(err)

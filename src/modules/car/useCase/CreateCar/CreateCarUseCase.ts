@@ -18,7 +18,7 @@ export class CreateCarUseCase{
         // }
 
         const Cars = new CarsSchema(data);
-        await this.carRepository.save(Cars)
+        return await this.carRepository.save(Cars)
 
 
     }

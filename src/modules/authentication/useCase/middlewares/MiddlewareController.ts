@@ -31,7 +31,7 @@ export class MiddlewareController {
             console.log(err)
             if (err instanceof Error) {
                 console.log(err)
-                return response.status(400).json({
+                return response.status(403).json({
                     message: err.message
                 })
               } else {

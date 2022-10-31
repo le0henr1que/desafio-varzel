@@ -8,13 +8,16 @@ export class UpdateCarController {
     ){}
 
     async handle(request: Request, response:Response): Promise<Response>{
-        const {name, brand, model, price, image} = request.body;
+        const {city, name, brand, model, year, km, price, image} = request.body;
         
         try{
             await this.updateCarUseCase.execute(request.params.id, {
+                city,
                 name,
-                brand,
-                model,
+                brand, 
+                model, 
+                year, 
+                km, 
                 price,
                 image
             })

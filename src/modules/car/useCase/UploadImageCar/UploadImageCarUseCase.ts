@@ -14,7 +14,7 @@ export class UploadImageCarUseCase{
        
         console.log(id)
         
-        this.carRepositoryUploadImage.UploadImage(id, `${fileName}`);
+        this.carRepositoryUploadImage.UploadImage(id, fileName);
         // console.log(fileName)
         
     

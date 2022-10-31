@@ -9,9 +9,10 @@ export class UploadImageCarController {
     ){}
 
     async handle(request: Request, response:Response): Promise<Response>{
-        
+        const {image} = request.body;
+
         try{
-            await this.updateCarUseCase.execute(request.params.id, request.file?.path)
+            await this.updateCarUseCase.execute(request.params.id, image)
             
            
 
