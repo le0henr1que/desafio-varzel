@@ -81,6 +81,7 @@ npm dev:server:up
 ## 🎁 Feature
 
 * Criar validação acertiva de dados 📢;
+* Testes Unitários 📢;
 
 
 
