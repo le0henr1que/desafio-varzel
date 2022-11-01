@@ -12,10 +12,10 @@ export class UploadImageCarUseCase{
 
     async execute(id:string, fileName:any){
        
-        console.log(id)
+       
         
         this.carRepositoryUploadImage.UploadImage(id, fileName);
-        // console.log(fileName)
+    
         
     
     }

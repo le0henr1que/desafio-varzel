@@ -12,7 +12,7 @@ export class ListByIdCarController {
 
         try{
             const Cars = await this.listByIdUseCase.execute(request.params.id)
-            console.log(Cars)
+        
             return response.status(200).json({Cars})
 
         }catch(err){

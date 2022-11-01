@@ -20,8 +20,9 @@
   },
   "scripts": {
     "dev:server": "tsnd ./src/server.ts",
-    "start": "tsc && node ./lib/index.js",
+    "start": "tsnd ./src/server.ts",
     "down": "docker-compose down",
+    "dev:build": "docker-compose build",
     "dev:server:up": "docker-compose up"
   },
   "name": "varzel-server",

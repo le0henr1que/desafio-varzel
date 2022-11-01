@@ -44,7 +44,7 @@ router.put('/update/:id/auto', middlewareController.handle,  (request, response)
 })
 
 
-router.post('/register/user',middlewareController.handle, (request, response) => {
+router.post('/register/user', (request, response) => {
     return createUserController.handle(request, response);
 })
 

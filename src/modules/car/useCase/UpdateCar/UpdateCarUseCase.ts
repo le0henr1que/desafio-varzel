@@ -12,7 +12,9 @@ export class UpdateCarUseCase{
     async execute(id:string, data: IUpdateCarDTO){
        
         const Cars = new CarsSchema(data);
-        await this.carRepositoryUpdate.UpdateCar(Cars, id)
+        
+        return await this.carRepositoryUpdate.UpdateCar(Cars, id)
+
 
 
     }

@@ -1,19 +1,7 @@
 version: "3.2"
 
 services:
-    db-verzel-auto:
-        image: mongo
-        container_name: db-verzel-auto
-        restart: always
-        ports:
-            - ${DB_PORT}:27017
-        environment:
-            MONGO_INITDB_DATABASE: ${DB_NAME}
-            MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
-            MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
-        volumes:
-            - ./data/db:/data/dbdocke
-
+   
     api-verzel-auto:
         build:
             context: .
@@ -22,6 +10,6 @@ services:
         volumes:
             - ./src:/app/src
         ports:
+            - "5000:5000"
             - "8080:8080"
-            - "8181:8181"
         command: npm run dev:server

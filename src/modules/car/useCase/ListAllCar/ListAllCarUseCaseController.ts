@@ -11,7 +11,7 @@ export class ListAllCarController {
 
         try{
             const Cars = await this.listAllCarUseCase.execute()
-            console.log(Cars)
+          
             return response.status(200).json({Cars})
 
         }catch(err){

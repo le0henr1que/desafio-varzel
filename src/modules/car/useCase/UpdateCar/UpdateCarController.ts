@@ -8,27 +8,12 @@ export class UpdateCarController {
     ){}
 
     async handle(request: Request, response:Response): Promise<Response>{
-        const {city, name, brand, model, year, km, price, image} = request.body;
-        
-        try{
-            await this.updateCarUseCase.execute(request.params.id, {
-                city,
-                name,
-                brand, 
-                model, 
-                year, 
-                km, 
-                price,
-                image
-            })
 
-            return response.status(201).send({message:"Atualização bem sucedida", Car:{
-                "Name": name,
-                "Brand": brand,
-                "Model":model,
-                "price":price, 
-                "Image":image
-            }})
+        try{
+            // var id = await request.params.id
+           const updateData = await this.updateCarUseCase.execute(request.params.id, request.body)
+
+            return response.status(201).send({message:"Atualização bem sucedida", Car:updateData})
 
         }catch(err){
             console.log(err)
