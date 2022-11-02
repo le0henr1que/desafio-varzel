@@ -72,6 +72,70 @@ npm dev:build
 npm dev:server:up
 ```
 
+## 🏁 Rotas
+
+### Publicas 
+
+`GET`
+```
+/list/auto
+```
+`GET`
+```
+/list/:id/auto
+```
+`POST`
+```
+/register/user
+```
+```json
+{
+    "name": "Administrador",
+    "email": "admin@admin.com",
+    "password": "admin123"
+}
+```
+
+`POST`
+```
+/login
+```
+```json
+{
+    "email": "admin@admin.com",
+    "password": "admin123"
+}
+```
+
+### Privada:
+
+`PUT`
+```
+/update/:id/auto
+```
+`DELETE`
+```
+/delete/:id/auto
+```
+`POST`
+```
+/upload/car/:id/auto/image
+```
+`POST`
+```
+/create/auto
+```
+```json
+{
+    "city":"São Paulo - SP",
+    "name":"March",
+    "brand":"Nissan", 
+    "model":"1.O 12V FLEX 4P MANUAL", 
+    "year":"2017", 
+    "km":"102.982 km", 
+    "price":38000
+}
+```
 
 ## 📄 Notas
 
