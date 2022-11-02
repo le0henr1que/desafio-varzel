@@ -40,7 +40,7 @@ yarn
 ```
 npm i
 ```
-### Para executar o projeto fora de um container dokcer, basta executar:
+### Para rodar o projeto fora de um container dokcer, basta executar:
 
 ```
 yarn dev:server
