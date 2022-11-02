@@ -21,6 +21,7 @@ Para execução do projeto é preciso:
 * Gerenciador de pacotes;
 * Node JS
 * Docker (Opcional)
+* MongoDB - ORM mongoose
 
 
 ### 🔧 Execução
