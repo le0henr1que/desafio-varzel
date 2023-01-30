@@ -21,7 +21,7 @@
   },
   "scripts": {
     "dev:server": "tsnd ./src/server.ts",
-    "start": "node ./src/server.ts",
+    "start": "tsnd ./src/server.ts",
     "down": "docker-compose down",
     "dev:build": "docker-compose build",
     "dev:server:up": "docker-compose up",
@@ -34,9 +34,7 @@
   "author": "le0henr1que <leonardoferreira.henrique1210@gmail.com>",
   "license": "MIT",
   "private": true,
-  "engines": {
-    "node":"14.x"
-  },
+
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.12",
