@@ -6,7 +6,7 @@ import { connectToMongoDb } from "./database/mongo";
 const PORT = process.env.PORT || 5000; 
 
 const createServer = async () => {
-    await connectToMongoDb();
+    // await connectToMongoDb();
     
     app.listen(PORT, () => {
       console.log(`Running at ${PORT}`);
