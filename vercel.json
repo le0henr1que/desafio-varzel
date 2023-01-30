@@ -2,10 +2,10 @@
     "name":"AutoPark-backend", 
     "version":2, 
     "public":true, 
-    "builds":{
-        "src":"./server.ts", 
-        "use":"@vercel/node"
-    }, 
+    "builds":[
+      {  "src":"./server.ts", 
+        "use":"@vercel/node"}
+    ], 
     "routes":[
         {
             "src":"/(.*)*", 
