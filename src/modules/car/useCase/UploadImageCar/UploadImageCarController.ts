@@ -14,8 +14,6 @@ export class UploadImageCarController {
         try{
             await this.updateCarUseCase.execute(request.params.id, image)
             
-           
-
             return response.status(201).send({message:"Sucssesful upload image"})
 
         }catch(err){

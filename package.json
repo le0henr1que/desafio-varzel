@@ -21,7 +21,7 @@
   },
   "scripts": {
     "dev:server": "tsnd ./src/server.ts",
-    "start": "tsnd ./src/server.ts",
+    "start": "node ./src/server.ts",
     "down": "docker-compose down",
     "dev:build": "docker-compose build",
     "dev:server:up": "docker-compose up",
