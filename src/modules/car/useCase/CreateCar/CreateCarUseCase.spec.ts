@@ -1,42 +1,66 @@
-// // import request from 'supertest';
-// import { CreateCarUseCase } from './CreateCarUseCase';
-// import nock from 'nock';
-// import * as Mongo from '../../repositories/CreateCar/implementation/MongoCarRepositoryCreate';
-// import { ICreateCarDTO } from "./CreateCarDTO";
+import request from 'supertest';
+import { app } from '../../../../app';
+import nock from 'nock';
 
 
+describe('POST /create/auto', () => {
+    jest.setTimeout(100000)
+   
 
-// describe('POST /create/auto', () => {
+   
+    it('should create car and return 200', async () => {
 
-//     jest.setTimeout(100000)
-      
-//   it('should create a new car', async () => {
+        const token = await request(app)
+        .post("/login")
+        .send({
+            email: "admin@admin.com",
+            password: "admin123"
+        });
+        
+        const res = await request(app)
+            .post(`/create/auto`)
+            .send({
+                image: "teste", 
+                city:"teste",
+                name:"teste",
+                brand:"teste", 
+                model:"teste", 
+                year:"teste", 
+                km:"teste", 
+                price:12
+            })
+            .set('Authorization', `Bearer ${token.body.token.token}`)
 
-  
+            expect(res.status).toBe(201)
+      });
+     
+     
+   
+    it('should create car and return 400', async () => {
 
-//     const mongoCarsRepository = new Mongo.MongoCarsRepository()
-//     const createCarUseCase = new CreateCarUseCase(mongoCarsRepository);
+        const token = await request(app)
+        .post("/login")
+        .send({
+            email: "admin@admin.com",
+            password: "admin123"
+        });
+        
+        const res = await request(app)
+            .post(`/create/auto`)
+            .send({
+                image: "teste", 
+                city:"teste",
+                name:"teste",
+                brand:"teste", 
+                model:"teste", 
+                year:"teste", 
+                km:"teste", 
+                price:"teste"
+            })
+            .set('Authorization', `Bearer ${token.body.token.token}`)
 
-//     const carData: ICreateCarDTO = {
-//         city:"Salvador - BA",
-//         name:"Prisma",
-//         brand: "Chevrolet",
-//         model: "1.4 MPFI LTZ 8V FLEX",
-//         year: "2020",
-//         km: "51.234 km",
-//         price:56000,
-//         image:"testeImg"
-//     }
-
-//     const car = await createCarUseCase.execute(carData);
-
-//     console.log(car)
-
-//     expect(car).toHaveProperty("id")
-
-//   });
-
-
-
-// });
-
+            expect(res.status).toBe(400)
+      });
+     
+     
+});

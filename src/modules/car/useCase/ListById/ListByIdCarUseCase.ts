@@ -10,6 +10,9 @@ export class ListByIdUseCase{
 
     async execute(id:string){
         const car = await this.carRepositoryListAll.ListById(id)
+        if(!car){
+            throw new Error('non-existent vehicle')
+        }
         return car
 
     }

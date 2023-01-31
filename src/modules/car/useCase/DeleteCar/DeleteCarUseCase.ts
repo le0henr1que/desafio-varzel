@@ -9,6 +9,11 @@ export class DeleteCarUseCase{
     ){}
 
     async execute(id:string){
+        const findId = await this.carRepositoryListAll.findById(id)
+        console.log(findId)
+        if(!findId){
+            throw new Error('non-existent vehicle')
+        }
         const car = await this.carRepositoryListAll.delete(id)
         return car
 

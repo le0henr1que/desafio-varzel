@@ -12,12 +12,7 @@ import { loginController } from './modules/authentication/useCase/LoginUser/Inde
 
 import { middlewareController } from './modules/authentication/useCase/middlewares/Index';
 
-// import * as multer from 'multer'
 
-
-// import {multerConfig} from "./utils/Config/multer"
-
-// const upload = multer.default(multerConfig)
 
 const router = Router()
 
@@ -28,7 +23,7 @@ router.post('/create/auto', middlewareController.handle, (request, response) => 
 })
 
 router.get('/list/auto', (request, response) => {
-    return listAllCarController.handle(response);
+    return listAllCarController.handle(request, response);
 })
 
 router.get('/list/:id/auto', (request, response) => {

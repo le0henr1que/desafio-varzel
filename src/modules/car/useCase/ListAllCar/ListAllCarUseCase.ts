@@ -8,8 +8,8 @@ export class ListAllCarUseCase{
         private carRepositoryListAll: ICarRepositoryListAllCar
     ){}
 
-    async execute(){
-        const car = await this.carRepositoryListAll.ListAll()
+    async execute(queryParams:any){
+        const car = await this.carRepositoryListAll.ListAll(queryParams)
         return car
 
 

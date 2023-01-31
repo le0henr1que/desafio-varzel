@@ -12,7 +12,12 @@ export class UploadImageCarUseCase{
 
     async execute(id:string, fileName:any){
        
-       
+        const findId = await this.carRepositoryUploadImage.findById(id)
+        console.log(findId)
+        if(!findId){
+            throw new Error('non-existent vehicle')
+        }
+
         
         this.carRepositoryUploadImage.UploadImage(id, fileName);
     

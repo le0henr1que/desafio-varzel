@@ -24,7 +24,6 @@ describe('POST /update/:id/auto', () => {
                 price:56000,
                 image:"testeImg"
             });
-            console.log(res)
             expect(res.status).toBe(403)
       });
 
@@ -37,10 +36,11 @@ describe('POST /update/:id/auto', () => {
             email: "admin@admin.com",
             password: "admin123"
         });
+        
 
         const res = await request(app)
             .put(`/update/${carId}/auto`)
-            .set('Authorization', `Bearer ${token.body.user.token.token}`)
+            .set('Authorization', `Bearer ${token.body.token.token}`)
             .send({
                 city:"Salvador - BA",
                 name:"Prisma",
@@ -51,10 +51,34 @@ describe('POST /update/:id/auto', () => {
                 price:56000,
                 image:"testeImg"
             });
-            console.log(res)
-            expect(res.status).toBe(201)
+            expect(res.status).toBe(200)
       });
+      it('should update car and return 400 error', async () => {
+        const carId = "636069937389128f5c3efd7a";
 
+        const token = await request(app)
+        .post("/login")
+        .send({
+            email: "admin@admin.com",
+            password: "admin123"
+        });
+
+        const res = await request(app)
+            .put(`/update/${carId}/auto`)
+            .set('Authorization', `Bearer ${token.body.token.token}`)
+            .send({
+                city:"Salvador - BA",
+                name:"Prisma",
+                brand: "Chevrolet",
+                model: "1.4 MPFI LTZ 8V FLEX",
+                year: "2020",
+                km: "51.234 km",
+                price:"teste price",
+                image:"testeImg"
+            });
+   
+            expect(res.status).toBe(400)
+      });
    
      
 });

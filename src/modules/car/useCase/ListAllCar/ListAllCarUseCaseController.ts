@@ -1,4 +1,4 @@
-import { Response } from "express";
+import { Response, Request } from "express";
 import { ListAllCarUseCase } from "./ListAllCarUseCase";
 
 export class ListAllCarController {
@@ -7,23 +7,26 @@ export class ListAllCarController {
         private listAllCarUseCase: ListAllCarUseCase,
     ){}
 
-    async handle(response:Response): Promise<Response>{
-
+    async handle(request:Request, response:Response): Promise<Response>{
         try{
-            const Cars = await this.listAllCarUseCase.execute()
+           
+            console.log(request.query)
+            const Cars = await this.listAllCarUseCase.execute(request.query)
           
-            return response.status(200).json({Cars})
+            return response.status(200).json({error:false, Cars})
 
         }catch(err){
             console.log(err)
             if (err instanceof Error) {
          
                 return response.status(400).json({
+                    error:true,
                     message: err.message
                 })
               } else {
          
                 return response.status(400).json({
+                    error:true,
                     message:'Unexpected error'
                 })
               }
