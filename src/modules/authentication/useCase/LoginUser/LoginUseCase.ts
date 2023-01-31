@@ -17,7 +17,10 @@ export class LoginUseCase{
     async execute(data: ICreateUserDTO){
 
         
+        
         const searchUser = await this.loginRepository.findEmail(data.email)
+
+       
         if(!searchUser){
             throw new Error('User not exist')
         }

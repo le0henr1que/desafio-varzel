@@ -1,6 +1,6 @@
 import { IUploadImage } from "../../repositories/UploadImageCar/IUploadImageCar";
 import { Cars, CarsSchema} from "../../entities/CarSchema";
-import {diskStorage} from "multer";
+// import {diskStorage} from "multer";
 import * as dotenv from 'dotenv';
 dotenv.config();
 

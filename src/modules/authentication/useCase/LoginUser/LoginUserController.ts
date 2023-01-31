@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { LoginUseCase } from "./LoginUseCase";
+import * as yup from 'yup';
 
 export class LoginController {
 
@@ -11,23 +12,32 @@ export class LoginController {
         const { email, password} = request.body;
         
         try{
+            const schema = yup.object().shape({
+                email: yup.string().email("bad formatted email field").required("required email field"), 
+                password:yup.string().required("required password field")
+            })
+
+           await schema.validate(request.body)
+
             const user = await this.loginUseCase.execute({
                 email,
                 password
             })
-            return response.status(200).send({user})
+            return response.status(200).send({error:false, ...user})
 
         }catch(err){
-            console.log(err)
+            
             if (err instanceof Error) {
          
                 return response.status(400).json({
-                    message: err.message
+                    error:true,
+                    messagem: err.message
                 })
               } else {
          
                 return response.status(400).json({
-                    message:'Unexpected error'
+                    error:true,
+                    messagem:'Unexpected error'
                 })
               }
           

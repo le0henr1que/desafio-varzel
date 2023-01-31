@@ -12,12 +12,12 @@ import { loginController } from './modules/authentication/useCase/LoginUser/Inde
 
 import { middlewareController } from './modules/authentication/useCase/middlewares/Index';
 
-import * as multer from 'multer'
+// import * as multer from 'multer'
 
 
-import {multerConfig} from "./utils/Config/multer"
+// import {multerConfig} from "./utils/Config/multer"
 
-const upload = multer.default(multerConfig)
+// const upload = multer.default(multerConfig)
 
 const router = Router()
 
@@ -48,7 +48,7 @@ router.post('/register/user', (request, response) => {
     return createUserController.handle(request, response);
 })
 
-router.post('/upload/car/:id/image', upload.single('file'), (request, response) => {
+router.post('/upload/car/:id/image', (request, response) => {
 
     return uploadImageCarController.handle(request, response);
 })
