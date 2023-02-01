@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
+import { Cars, CarsSchema } from "../modules/car/entities/CarSchema";
 
 import {connect, Mongoose} from 'mongoose';
 
@@ -10,7 +11,9 @@ export const connectToMongoDb =  async () => {
       .then(x => {
           console.log(
               `Connected to Mongo! Database name: "${x.connections[0].name}"`,
+              
           );
+          
       })
       .catch(err => {
           console.error('Error connecting to mongo', err);
