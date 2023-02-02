@@ -1,15 +1,14 @@
 version: "3.2"
 
 services:
-   
-    api-verzel-auto:
-        build:
-            context: .
-            dockerfile: Dockerfile.dev
-        container_name:  api-verzel-auto
-        volumes:
-            - ./src:/app/src
-        ports:
-            - "5000:5000"
-            - "8080:8080"
-        command: npm run dev:server
+  api-verzel-auto:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: api-verzel-auto
+    volumes:
+      - ./src:/app/src
+    ports:
+      - "5000:5000"
+      - "8080:8080"
+    command: npm run dev:server

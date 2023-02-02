@@ -1,5 +1,5 @@
 import { Cars } from "../../entities/CarSchema";
 
-export interface ICarRepositoryListAllCar{
-    ListAll(queryParams:any): Promise<any>;
+export interface ICarRepositoryListAllCar {
+  ListAll(queryParams: any): Promise<any>;
 }

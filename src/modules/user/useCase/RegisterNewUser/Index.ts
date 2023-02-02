@@ -1,16 +1,11 @@
-
-import * as Mongo  from "../../repositories/RegisterNewUser/Implementation/MongoRegisterNewUser";
+import * as Mongo from "../../repositories/RegisterNewUser/Implementation/MongoRegisterNewUser";
 import { CreateUserController } from "./RegisterNewUserController";
 import { CreateUserUseCase } from "./RegisterNewUserUseCase";
 
-const MongoUserRepository = new Mongo.MongoCarsRepositoryCreateUser()
+const MongoUserRepository = new Mongo.MongoCarsRepositoryCreateUser();
 //create merge
-const userUseCase = new CreateUserUseCase(
-    MongoUserRepository
-)
+const userUseCase = new CreateUserUseCase(MongoUserRepository);
 
-const createUserController = new CreateUserController(
-    userUseCase
-)
+const createUserController = new CreateUserController(userUseCase);
 
-export {userUseCase, createUserController}
+export { userUseCase, createUserController };

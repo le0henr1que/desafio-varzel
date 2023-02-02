@@ -1,5 +1,4 @@
-import { model, Document, Schema } from 'mongoose';
-
+import { model, Document, Schema } from "mongoose";
 
 export interface User extends Document {
   // _id:String;
@@ -13,25 +12,24 @@ export interface User extends Document {
 const schema = new Schema<User>({
   name: {
     type: String,
-    required:true
+    required: true,
   },
   email: {
     type: String,
-    required:true
+    required: true,
   },
   password: {
     type: String,
-    required:true
+    required: true,
   },
   created_at: {
     type: Date,
-    default: new Date()
+    default: new Date(),
   },
   updated_at: {
     type: Date,
-    default: new Date()
-  }
+    default: new Date(),
+  },
 });
 
-
-export const UserSchema = model<User>('User', schema);
+export const UserSchema = model<User>("User", schema);

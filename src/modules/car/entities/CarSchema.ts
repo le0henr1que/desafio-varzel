@@ -1,15 +1,14 @@
-import { model, Document, Schema } from 'mongoose';
-
+import { model, Document, Schema } from "mongoose";
 
 export interface Cars extends Document {
   // _id:String;
-  city:string,
-  name:string
-  brand:string, 
-  model:string, 
-  year:string, 
-  km:string, 
-  price:number
+  city: string;
+  name: string;
+  brand: string;
+  model: string;
+  year: string;
+  km: string;
+  price: number;
 
   image: string;
   created_at: Date;
@@ -17,27 +16,27 @@ export interface Cars extends Document {
 }
 
 const schema = new Schema<Cars>({
-  city:{
-    type:String 
+  city: {
+    type: String,
   },
-  name:{
-    type:String 
+  name: {
+    type: String,
   },
-  brand:{
-    type:String 
-  }, 
-  model:{
-    type:String 
-  }, 
-  year:{
-    type:String 
-  }, 
-  km:{
-    type:String 
-  }, 
+  brand: {
+    type: String,
+  },
+  model: {
+    type: String,
+  },
+  year: {
+    type: String,
+  },
+  km: {
+    type: String,
+  },
 
-  price:{
-    type:Number
+  price: {
+    type: Number,
   },
 
   image: {
@@ -45,13 +44,12 @@ const schema = new Schema<Cars>({
   },
   created_at: {
     type: Date,
-    default: new Date()
+    default: new Date(),
   },
   updated_at: {
     type: Date,
-    default: new Date()
-  }
+    default: new Date(),
+  },
 });
 
-
-export const CarsSchema = model<Cars>('Cars', schema);
+export const CarsSchema = model<Cars>("Cars", schema);

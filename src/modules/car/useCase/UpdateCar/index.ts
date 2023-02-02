@@ -1,16 +1,11 @@
-
-import * as Mongo  from "../../repositories/UpdateCar/implementation/MongoCarRepositoryDelete";
+import * as Mongo from "../../repositories/UpdateCar/implementation/MongoCarRepositoryDelete";
 import { UpdateCarController } from "./UpdateCarController";
 import { UpdateCarUseCase } from "./UpdateCarUseCase";
 
-const MongoUpdateCarRepository = new Mongo.MongoCarsRepositoryUpdateCar()
+const MongoUpdateCarRepository = new Mongo.MongoCarsRepositoryUpdateCar();
 //create merge
-const updateCarUseCase = new UpdateCarUseCase(
-    MongoUpdateCarRepository
-)
+const updateCarUseCase = new UpdateCarUseCase(MongoUpdateCarRepository);
 
-const updateCarController = new UpdateCarController(
-    updateCarUseCase
-)
+const updateCarController = new UpdateCarController(updateCarUseCase);
 
-export {updateCarUseCase, updateCarController}
+export { updateCarUseCase, updateCarController };

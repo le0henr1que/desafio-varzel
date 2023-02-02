@@ -2,24 +2,19 @@
 import { ICarRepository } from "../../repositories/CreateCar/ICarRepositoryCreate";
 import { ICreateCarDTO } from "./CreateCarDTO";
 
-import { Cars, CarsSchema} from "../../entities/CarSchema";
+import { Cars, CarsSchema } from "../../entities/CarSchema";
 // import { Product } from "../../entities/Cars";
 
-export class CreateCarUseCase{
+export class CreateCarUseCase {
+  constructor(private carRepository: ICarRepository) {}
 
-    constructor(
-        private carRepository: ICarRepository
-    ){}
+  async execute(data: ICreateCarDTO) {
+    // const poductNameAlredyExists = await this.productRepository.findByName(data.name);
+    // if(poductNameAlredyExists[0]?.name){
+    //     throw new Error('Produto já existe na sua lista')
+    // }
 
-    async execute(data: ICreateCarDTO){
-        // const poductNameAlredyExists = await this.productRepository.findByName(data.name);
-        // if(poductNameAlredyExists[0]?.name){
-        //     throw new Error('Produto já existe na sua lista')
-        // }
-
-        const Cars = new CarsSchema(data);
-        return await this.carRepository.save(Cars)
-
-
-    }
+    const Cars = new CarsSchema(data);
+    return await this.carRepository.save(Cars);
+  }
 }

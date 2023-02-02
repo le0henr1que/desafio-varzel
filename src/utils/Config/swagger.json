@@ -1,338 +1,322 @@
 {
-    "openapi":"3.0.1", 
-    "info":{
-        "title":"AutoPark", 
-        "description":"AutoPark é uma aplicação web que permite aos usuários visualizar e gerenciar uma lista de veículos. A aplicação usa autenticação JWT para garantir que somente usuários autorizados tenham acesso às informações sensíveis sobre os veículos.", 
-        "version":"1.0.0"
-    }, 
-    "basePath":"/",
+  "openapi": "3.0.1",
+  "info": {
+    "title": "AutoPark",
+    "description": "AutoPark é uma aplicação web que permite aos usuários visualizar e gerenciar uma lista de veículos. A aplicação usa autenticação JWT para garantir que somente usuários autorizados tenham acesso às informações sensíveis sobre os veículos.",
+    "version": "1.0.0"
+  },
+  "basePath": "/",
 
-    "components":{
-        "securitySchemes":{
-            "bearerAuth":{
-                "type":"http", 
-                "scheme":"bearer", 
-                "bearerFormat":"JWT"
-            }
-        }
-    },
-    
-    "paths":{
-        "/delete/{id}/auto":{
-            "delete":{
-                "security":[{"bearerAuth":[]}],
-                "tags":["Cars"],
-                "parameters":[
-                    {  
-                        "name": "id",
-                        "in": "path",
-                        "description": "Id car",
-                        "required": true,
-                        "type": "integer"
-                   }
-                    
-                ],
-                "responses":{
-                    "200":{
-                        "description":"Deleted"
-                    },
-                    "400":{
-                        "description":"Unknown error"
-                    }
-                 
-                }
-            }
-        },
-        "/list/{id}/auto":{
-            "get":{
-          
-                "tags":["Cars"],
-                "parameters":[
-                    {  
-                        "name": "id",
-                        "in": "path",
-                        "description": "Id car",
-                        "required": true,
-                        "type": "integer"
-                   }
-                    
-                ],
-                "responses":{
-                    "200":{
-                        "description":"Listed"
-                    },
-                    "400":{
-                        "description":"Unknown error"
-                    }
-                 
-                }
-            }
-        },
-        "/update/{id}/auto":{
-            "put":{
-                "tags":["Cars"],
-                "security":[{"bearerAuth":[]}],
-                "parameters":[
-                    {  
-                        "name": "id",
-                        "in": "path",
-                        "description": "Id car",
-                        "required": true,
-                        "type": "integer"
-                   }
-                    
-                ],
-                "requestBody":{
-                    "content":{
-                        "application/json":{
-                            "schema":{
-                                "type":"object", 
-                                "properties":{
-                                    "city":{
-                                        "type":"string"
-                                    }, 
-                                    "name":{
-                                        "type":"string"
-                                    }, 
-                                    "brand":{
-                                        "type":"string"
-                                    }, 
-                                    "model":{
-                                        "type":"string"
-                                    },
-                                    "year":{
-                                        "type":"string"
-                                    },
-                                    "km":{
-                                        "type":"string"
-                                    },
-                                    "price":{
-                                        "type":"number"
-                                    },
-                                    "image":{
-                                        "type":"string"
-                                    }
-                                }
-                            }
-                        }
-                    } 
-                },
-                "responses":{
-                    "201":{
-                        "description":"Update"
-                    },
-                    "400":{
-                        "description":"Malformated properties or user already exist"
-                    }, 
-                    "403":{
-                        "description":"non-existent token"
-                    }
-                 
-                }
-            }
-        },
-        "/create/auto":{
-            "post":{
-                "tags":["Cars"],
-                "security":[{"bearerAuth":[]}],
-                "requestBody":{
-                    "content":{
-                        "application/json":{
-                            "schema":{
-                                "type":"object", 
-                                "properties":{
-                                    "city":{
-                                        "type":"string"
-                                    }, 
-                                    "name":{
-                                        "type":"string"
-                                    }, 
-                                    "brand":{
-                                        "type":"string"
-                                    }, 
-                                    "model":{
-                                        "type":"string"
-                                    },
-                                    "year":{
-                                        "type":"string"
-                                    },
-                                    "km":{
-                                        "type":"string"
-                                    },
-                                    "price":{
-                                        "type":"number"
-                                    },
-                                    "image":{
-                                        "type":"string"
-                                    }
-                                }
-                            }
-                        }
-                    } 
-                },
-                "responses":{
-                    "201":{
-                        "description":"Created"
-                    },
-                    "400":{
-                        "description":"Malformated properties or user already exist"
-                    }, 
-                    "403":{
-                        "description":"non-existent token"
-                    }
-                 
-                }
-            }
-        },
-        "/list/auto":{
-            "get":{
-          
-                "tags":["Cars"],
-                "summary": "Retorna a lista de veículos com páginação e filtro não obrigatório",
-                "parameters":[
-                    {  
-                        "name": "page",
-                        "in": "query",
-                        "description": "Página a ser Exibida",
-                        "required": false,
-                        "type": "integer"
-                   }, 
-                   {
-                        "name": "pageSize",
-                        "in": "query",
-                        "description": "Quantidade a ser exibid em uma página",
-                        "required": false,
-                        "type": "integer"
-                   },
-                   {
-                        "name": "city",
-                        "in": "query",
-                        "description": "City",
-                        "required": false,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "name",
-                        "in": "query",
-                        "description": "Name",
-                        "required": false,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "Brand",
-                        "in": "query",
-                        "description": "Brand",
-                        "required": false,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "model",
-                        "in": "query",
-                        "description": "Model",
-                        "required": false,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "year",
-                        "in": "query",
-                        "description": "Year",
-                        "required": false,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "km",
-                        "in": "query",
-                        "description": "Km",
-                        "required": false,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "price",
-                        "in": "query",
-                        "description": "Price",
-                        "required": false,
-                        "type": "integer"
-                    }
-                    
-                ],
-                "responses":{
-                    "200":{
-                        "description":"Listed"
-                    },
-                    "400":{
-                        "description":"Unknown error"
-                    }
-                 
-                }
-            }
-        },
-        "/register/user":{
-            "post":{
-                "tags":["User"],
-                "requestBody":{
-                    "content":{
-                        "application/json":{
-                            "schema":{
-                                "type":"object", 
-                                "properties":{
-                                    "name":{
-                                        "type":"string"
-                                    }, 
-                                    "email":{
-                                        "type":"string"
-                                    }, 
-                                    "password":{
-                                        "type":"string"
-                                    }
-                                }
-                            }
-                        }
-                    } 
-                },
-                "responses":{
-                    "201":{
-                        "description":"Created"
-                    },
-                    "400":{
-                        "description":"Malformated properties or user already exist"
-                    }
-                 
-                }
-            }
-        },
-        "/login":{
-            "post":{
-                "tags":["User"],
-                "requestBody":{
-                    "content":{
-                        "application/json":{
-                            "schema":{
-                                "type":"object", 
-                                "properties":{
-                                    "email":{
-                                        "type":"string"
-                                    }, 
-                                    "password":{
-                                        "type":"string"
-                                    }
-                                }
-                            }
-                        }
-                    } 
-                },
-                "responses":{
-                    "200":{
-                        "description":"Ok"
-                    },
-                    "400":{
-                        "description":"User not Exist or Invalid password"
-                    }
-                 
-                }
-            }
-        }
-
-        
-
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
+  },
+
+  "paths": {
+    "/delete/{id}/auto": {
+      "delete": {
+        "security": [{ "bearerAuth": [] }],
+        "tags": ["Cars"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id car",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted"
+          },
+          "400": {
+            "description": "Unknown error"
+          }
+        }
+      }
+    },
+    "/list/{id}/auto": {
+      "get": {
+        "tags": ["Cars"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id car",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listed"
+          },
+          "400": {
+            "description": "Unknown error"
+          }
+        }
+      }
+    },
+    "/update/{id}/auto": {
+      "put": {
+        "tags": ["Cars"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id car",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "city": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "brand": {
+                    "type": "string"
+                  },
+                  "model": {
+                    "type": "string"
+                  },
+                  "year": {
+                    "type": "string"
+                  },
+                  "km": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "image": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Update"
+          },
+          "400": {
+            "description": "Malformated properties or user already exist"
+          },
+          "403": {
+            "description": "non-existent token"
+          }
+        }
+      }
+    },
+    "/create/auto": {
+      "post": {
+        "tags": ["Cars"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "city": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "brand": {
+                    "type": "string"
+                  },
+                  "model": {
+                    "type": "string"
+                  },
+                  "year": {
+                    "type": "string"
+                  },
+                  "km": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "image": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Malformated properties or user already exist"
+          },
+          "403": {
+            "description": "non-existent token"
+          }
+        }
+      }
+    },
+    "/list/auto": {
+      "get": {
+        "tags": ["Cars"],
+        "summary": "Retorna a lista de veículos com páginação e filtro não obrigatório",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Página a ser Exibida",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Quantidade a ser exibid em uma página",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "city",
+            "in": "query",
+            "description": "City",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "Brand",
+            "in": "query",
+            "description": "Brand",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "model",
+            "in": "query",
+            "description": "Model",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "Year",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "km",
+            "in": "query",
+            "description": "Km",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "price",
+            "in": "query",
+            "description": "Price",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Listed"
+          },
+          "400": {
+            "description": "Unknown error"
+          }
+        }
+      }
+    },
+    "/register/user": {
+      "post": {
+        "tags": ["User"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Malformated properties or user already exist"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["User"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok"
+          },
+          "400": {
+            "description": "User not Exist or Invalid password"
+          }
+        }
+      }
+    }
+  }
 }
