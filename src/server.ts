@@ -11,7 +11,8 @@ const createServer = async () => {
     // await connectToMongoDb();
     app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
     app.listen(PORT, () => {
-      console.log(`Running at ${PORT}`);
+      console.log(`Running at http://localhost:${PORT}`);
+      console.log(`Documentation at http://localhost:${PORT}/api/docs`);
     })
 
 
