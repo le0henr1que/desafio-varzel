@@ -32,15 +32,10 @@ export class MongoCarsRepositoryListAll implements ICarRepositoryListAllCar{
         if (queryParams.price) {
             filter.price = queryParams.price;
         }
-        if (queryParams.page) {
-            pageSize = queryParams.page
-        }
-        if (queryParams.pageSize) {
-            page = queryParams.pageSize
-        }
+     
         console.log(filter)
         
-        var listCar = await CarsSchema.find(filter).skip(page - 1).limit(pageSize);
+        var listCar = await CarsSchema.find(filter).skip(queryParams.page - 1).limit(queryParams.pageSize);
         var count = await CarsSchema.find(filter).count()
        
         return {listCar, count};
