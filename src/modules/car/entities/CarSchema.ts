@@ -9,7 +9,7 @@ export interface Cars extends Document {
   year: string;
   km: string;
   price: number;
-
+  createdBy:string,
   image: string;
   created_at: Date;
   updated_at: Date;
@@ -40,6 +40,9 @@ const schema = new Schema<Cars>({
   },
 
   image: {
+    type: String,
+  },
+  createdBy: {
     type: String,
   },
   created_at: {

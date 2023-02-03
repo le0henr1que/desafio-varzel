@@ -23,6 +23,7 @@ export class LoginUseCase {
     const user = {
       name: searchUser.name,
       email: searchUser.email,
+      typeUser:searchUser.typeUser,
       token: {
         token: sign({ id: searchUser._id }, jwtModule.secret, {
           expiresIn: jwtModule.expireIn,

@@ -5,6 +5,7 @@ export interface User extends Document {
   name: string;
   email: string;
   password: string;
+  typeUser:string;
   created_at: Date;
   updated_at: Date;
 }
@@ -21,6 +22,10 @@ const schema = new Schema<User>({
   password: {
     type: String,
     required: true,
+  },
+  typeUser: {
+    type: String,
+    required: false,
   },
   created_at: {
     type: Date,

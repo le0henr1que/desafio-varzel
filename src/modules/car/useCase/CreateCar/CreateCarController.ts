@@ -6,7 +6,7 @@ export class CreateCarController {
   constructor(private createCarUseCase: CreateCarUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { city, name, brand, model, year, km, price, image } = request.body;
+    const { city, name, brand, model, year, km, price, image, createdBy } = request.body;
     try {
       const schema = yup.object().shape({
         city: yup.string().required("required city field"),
@@ -16,7 +16,7 @@ export class CreateCarController {
         year: yup.string().required("Required year field"),
         km: yup.string().required("Required km field"),
         price: yup.number().required("Required price field"),
-        image: yup.string().notRequired(),
+        // image: yup.string().notRequired(),
       });
 
       await schema.validate(request.body);
@@ -30,6 +30,7 @@ export class CreateCarController {
         km,
         price,
         image,
+        createdBy
       });
       return response.status(201).send(created);
     } catch (err) {

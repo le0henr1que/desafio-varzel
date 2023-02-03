@@ -6,7 +6,7 @@ export class CreateUserController {
   constructor(private createCarUseCase: CreateUserUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { name, email, password } = request.body;
+    const { name, email, password, typeUser } = request.body;
 
     try {
       const schema = yup.object().shape({
@@ -24,6 +24,7 @@ export class CreateUserController {
         name,
         email,
         password,
+        typeUser
       });
       return response.status(201).send();
     } catch (err) {

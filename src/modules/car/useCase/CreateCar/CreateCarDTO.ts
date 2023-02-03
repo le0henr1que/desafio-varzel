@@ -7,4 +7,5 @@ export interface ICreateCarDTO {
   km: string;
   price: number;
   image: string;
+  createdBy:string;
 }

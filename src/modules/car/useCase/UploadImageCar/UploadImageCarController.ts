@@ -11,14 +11,14 @@ export class UploadImageCarController {
     const id = request.params.id;
 
     try {
-      const schema = yup.object().shape({
-        image: yup.string().required("required image field"),
-      });
+      // const schema = yup.object().shape({
+      //   image: yup.string().required("required image field"),
+      // });
       if (!id) {
         throw new Error("required id params");
       }
 
-      await schema.validate(request.body);
+      // await schema.validate(request.body);
 
       await this.updateCarUseCase.execute(id, image);
 
