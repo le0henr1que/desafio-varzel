@@ -21,6 +21,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
+    "data:persistence":"tsnd ./src/database/Fixture/fixtureData.ts",
     "dev:server": "tsnd ./src/server.ts",
     "start": "tsnd ./src/server.ts",
     "down": "docker-compose down",
