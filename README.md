@@ -86,6 +86,8 @@ yarn data:persistence
 
 ### 🐋 Para rodar o projeto em um container docker, basta executar respectivamente:
 
+OBS: Em cado de execução no docker, altere a variavel de ambiente DB_HOST para mongodb. 
+
 - yarn
 
 ```
