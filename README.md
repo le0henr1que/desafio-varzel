@@ -1,8 +1,32 @@
-![Símbolo-texto-horizontal(1)](https://user-images.githubusercontent.com/68018921/199128538-76654f75-afe5-4906-a9c4-f47a7fa48bd5.png)
 
 # Verzel AutoPark
+[![GitHub issues](https://img.shields.io/github/issues/le0henr1que/desafio-verzel-Back-end.svg)](https://github.com/le0henr1que/desafio-verzel-Back-end/issues)
+[![GitHub forks](https://img.shields.io/github/forks/sle0henr1que/desafio-verzel-Back-end.svg)](https://github.com/le0henr1que/desafio-verzel-Back-end/network)
 
-Sistema CRUD de vitrine de veiculos.
+Este é um projeto que visa fornecer uma API RESTful para gerenciamento de anúncios de veículos. Com ele, é possível criar, ler, atualizar e excluir anúncios de veículos, fornecendo informações como modelo, marca, ano, preço e imagem do veículo.
+
+A API foi construída usando Node.js com Express e armazenamento de dados MongoDB. Também foi utilizado o Mongoose, uma biblioteca de modelagem de objetos MongoDB para Node.js, para facilitar a interação com o banco de dados.
+
+Possui dois tipos de usuários distintos, administrador e anunciante, cada um com seus próprios privilégios e responsabilidades. O administrador tem a capacidade de editar e excluir anúncios de veículos, enquanto o anunciante pode criar e gerenciar seus próprios anúncios.
+
+Além de Possui um sistema de notificação por email entre anunciante e pessoa com interesse.
+
+## 📋 Documentação
+
+A documentação da API está disponível em http://localhost:5000/api/docs , Ela fornece informações detalhadas sobre as rotas disponíveis e os parâmetros de entrada e saída de cada rota.
+
+## 📋 Teste
+
+Os teste da estão disponíveis em:
+```
+yarn test
+```
+ou
+```
+npm run test
+```
+
+Ela fornece informações detalhadas sobre os testes end to end de cada rota.
 
 ## 🚀 Começando
 
@@ -41,6 +65,7 @@ yarn
 npm i
 ```
 
+
 ### Para rodar o projeto fora de um container dokcer, basta executar:
 
 ```
@@ -49,6 +74,14 @@ yarn dev:server
 
 ```
 npm run dev:server
+```
+### Execução da persistência dos dados:
+
+```
+npm run data:persistence
+```
+```
+yarn data:persistence
 ```
 
 ### 🐋 Para rodar o projeto em um container docker, basta executar respectivamente:
@@ -72,93 +105,50 @@ npm dev:build
 ```
 npm dev:server:up
 ```
+### Execução da persistência dos dados:
 
-## 🏁 Rotas
-
-### Publicas
-
-`GET`
+Com as o docker rodando, abra outra sehll no vs code e execute os seguintes comandos:
 
 ```
-/list/auto
+docker-compose run --rm api-verzel-auto sh
 ```
 
-`GET`
-
+em seguida execute:
 ```
-/list/:id/auto
+npm run data:persistence
 ```
-
-`POST`
-
 ```
-/register/user
+yarn data:persistence
 ```
 
-```json
-{
-  "name": "Administrador",
-  "email": "admin@admin.com",
-  "password": "admin123"
-}
-```
-
-`POST`
-
-```
-/login
-```
-
-```json
-{
-  "email": "admin@admin.com",
-  "password": "admin123"
-}
-```
-
-### Privada:
-
-`PUT`
-
-```
-/update/:id/auto
-```
-
-`DELETE`
-
-```
-/delete/:id/auto
-```
-
-`POST`
-
-```
-/upload/car/:id/auto/image
-```
-
-`POST`
-
-```
-/create/auto
-```
-
-```json
-{
-  "city": "São Paulo - SP",
-  "name": "March",
-  "brand": "Nissan",
-  "model": "1.O 12V FLEX 4P MANUAL",
-  "year": "2017",
-  "km": "102.982 km",
-  "price": 38000
-}
-```
 
 ## 📄 Notas
 
-- Caso execute o container, certifique-se de executar o comando (npm run down) ou (yarn down) para parar o container.
+ ### interações Obrigatorias:
+  
+  * 🟩 Sistema de Login;
+  * 🟩 Cadastro de veiculos;
+  * 🟩 Update de veiculos;
+  * 🟩 Cadastro de imagem do veiuclo (Firefox) no Google Chrome não está cadastrando;
+  * 🟩 Uodate de imagem (firefox e crhome);
+  * 🟩 Deleção de veiculos;
+  * 🟩 Listagem de veiculos;
+  * 🟩 Sistema de permissão para CRUD em veiculos;
+  * 🟩 Listagem por ordem de preço;
+  * 🟩 JWT;
+  
+ ### PLUS++ (interações não obrigatórias): 
+ 
+  * 🟩 Botão Home e comprar carro;
+  * 🟩 Input search de Pesquisar veiculo;
+  * 🟩 Todos os Filtros;
+  * 🟩 Paginação;
+  * 🟩 Pilula de filtro;
+  * 🟩 Classificar do maior para o menor preço pelo filtro de veiculos;
+  * 🟩 Avalie Carro conosco;
+  * 🟩 Anúncio de veiculso;
+  * 🟩 Evio de email com notificação de interesse;
+  * 🟩 Testes end to end;
+  * 🟩 Swagger;
 
-## 🎁 Feature
 
-- Criar validação acertiva de dados 📢;
-- Testes Unitários 📢;
