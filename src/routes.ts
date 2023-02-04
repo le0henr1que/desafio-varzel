@@ -3,6 +3,7 @@ import { createCarController } from "./modules/car/useCase/CreateCar/index";
 import { listAllCarController } from "./modules/car/useCase/ListAllCar/index";
 import { listByIdCarController } from "./modules/car/useCase/ListById/index";
 import { deleteCarController } from "./modules/car/useCase/DeleteCar/index";
+import { sendEmailController } from "./modules/car/useCase/SendEmail/index";
 import { updateCarController } from "./modules/car/useCase/UpdateCar/index";
 
 import {
@@ -38,6 +39,15 @@ router.delete(
   middlewareController.handle,
   (request, response) => {
     return deleteCarController.handle(request, response);
+  }
+);
+
+
+router.post(
+  "/sendEmail",
+  middlewareController.handle,
+  (request, response) => {
+    return sendEmailController.handle(request, response);
   }
 );
 
